@@ -22,7 +22,7 @@ Temuan yang konsisten lintas survei: kelompok usia produktif-muda menanggung beb
 
 1. Bagaimana merancang sistem smart mirror yang mengklasifikasikan mood harian pengguna secara non-intrusive dan real-time, dengan menggabungkan analisis ekspresi wajah dan sinyal fisiologis tanpa kontak?
 2. Bagaimana merepresentasikan mood ke dalam kerangka dimensional (valence–arousal) menggunakan Graph Convolutional Network, sehingga keluaran lebih kaya informasi dan lebih tahan terhadap keterbatasan model kategori emosi diskrit?
-3. Bagaimana merancang mekanisme fusi multimodal yang menggabungkan fitur geometris wajah (Action Units) dan fitur fisiologis (HRV/BRV dari rPPG) ke dalam satu ruang representasi mood yang konsisten?
+3. Bagaimana merancang mekanisme fusi multimodal yang menggabungkan fitur geometris wajah (dinamika ekspresi pada ruang valence–arousal) dan fitur fisiologis (HRV/BRV dari rPPG) ke dalam satu ruang representasi mood yang konsisten?
 4. Bagaimana merancang arsitektur IoT (edge-to-cloud) yang memungkinkan pelacakan tren mood mingguan dan rekomendasi intervensi personal, tanpa mengorbankan privasi data biometrik wajah?
 
 ## Cara Kerja Singkat
@@ -32,10 +32,10 @@ Temuan yang konsisten lintas survei: kelompok usia produktif-muda menanggung beb
 Alur enam tahap (ringkasan Gambar 1 proposal):
 
 1. **Autentikasi & personalisasi** — pengguna dikenali, profil & preferensi dimuat.
-2. **Akuisisi contactless** — video wajah direkam kamera IMX708 NoIR di balik two-way mirror; presence-detection memicu sesi.
-3. **Pra-pemrosesan** — CLAHE pada ROI wajah, ekstraksi 468 landmark (MediaPipe).
-4. **Ekstraksi fitur ganda** — ST-GCN/Graph-Tran mengekstrak intensitas Action Unit (fitur geometris) secara paralel dengan STC-rPPG yang mengestimasi HR/HRV dari sinyal rPPG.
-5. **Fusi multimodal & klasifikasi** — fitur digabung, lalu dual-head menghasilkan regresi valence–arousal sekaligus klasifikasi 5 kelas mood.
+2. **Akuisisi contactless** — video wajah direkam kamera Arducam IMX477 (RGB) di balik two-way mirror; presence-detection memicu sesi.
+3. **Pra-pemrosesan** — CLAHE pada ROI wajah, ekstraksi 468 landmark (MediaPipe) lalu disubset ke 68 landmark iBUG sebagai simpul graph.
+4. **Ekstraksi fitur ganda** — ST-GCN/Graph-Tran mengestimasi valence–arousal ekspresi (fitur geometris) secara paralel dengan STC-rPPG yang mengestimasi HR/HRV dari sinyal rPPG.
+5. **Fusi multimodal & klasifikasi (VA-bridge)** — valence diambil dari ekspresi; arousal difusikan dari arousal ekspresi + fisiologis; satu argmax kuadran pada ruang valence–arousal menghasilkan klasifikasi 5 kelas mood.
 6. **Personal wellness coach** — micro-intervention kontekstual + visualisasi tren mood 7 hari.
 
 ## Fitur Utama
@@ -51,7 +51,7 @@ Alur enam tahap (ringkasan Gambar 1 proposal):
 | Repo | Fungsi |
 | --- | --- |
 | **MoodIn-master** (repo ini) | Hub proyek: dokumentasi, proposal, aset, konvensi lintas-repo, kontrak bersama |
-| [Hardware-Connections](https://github.com/MoodInBME/Hardware-Connections.gits) | Konfigurasi fisik, wiring, enclosure, kamera, daya, protokol komunikasi |
+| [Hardware-Connections](https://github.com/MoodInBME/Hardware-Connections.git) | Konfigurasi fisik, wiring, enclosure, kamera, daya, protokol komunikasi |
 | [Software-Architecture](https://github.com/MoodInBME/Software-Architecture.git) | Model deep learning, feature fusion, training, evaluasi, deployment edge |
 | [Interface-Display](https://github.com/MoodInBME/Interface-Display.git) | UI kiosk (PySide6 + QML): navigasi layar, input pengguna, tampilan hasil, tren lokal |
 
@@ -93,11 +93,11 @@ Diselaraskan dengan tabel progres Bab 3.3 proposal. Isi kolom Progres saat sinkr
 | Komponen | Repo | Progres |
 | --- | --- | --- |
 | Perakitan hardware, wiring, enclosure | Hardware-Connections | _isi %_ |
-| Konfigurasi kamera & uji sinyal (mirror/NoIR) | Hardware-Connections | _isi %_ |
+| Konfigurasi kamera & uji sinyal (mirror/RGB) | Hardware-Connections | _isi %_ |
 | Preprocessing & ekstraksi landmark | Software-Architecture | _isi %_ |
 | Model STC-rPPG | Software-Architecture | _isi %_ |
 | Model ST-GCN / Graph-Tran | Software-Architecture | _isi %_ |
-| Fusi multimodal & dual-head | Software-Architecture | _isi %_ |
+| Fusi multimodal (VA-bridge) | Software-Architecture | _isi %_ |
 | UI kiosk (PySide6 + QML) | Interface-Display | _isi %_ |
 | Integrasi end-to-end (MQTT) | Semua | _isi %_ |
 
