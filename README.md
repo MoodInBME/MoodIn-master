@@ -55,7 +55,7 @@ Alur enam tahap (ringkasan Gambar 1 proposal):
 | [Software-Architecture](https://github.com/MoodInBME/Software-Architecture.git) | Model deep learning, feature fusion, training, evaluasi, deployment edge |
 | [Interface-Display](https://github.com/MoodInBME/Interface-Display.git) | UI kiosk (PySide6 + QML): navigasi layar, input pengguna, tampilan hasil, tren lokal |
 
-> Ganti `MoodIn` pada URL di atas bila slug organisasi GitHub Anda berbeda.
+> Slug organisasi GitHub: **MoodInBME** (URL di atas sudah sesuai).
 
 ## Struktur Repository Ini
 
