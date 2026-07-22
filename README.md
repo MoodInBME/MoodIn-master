@@ -6,7 +6,7 @@
 
 ![Status](https://img.shields.io/badge/status-on--going-yellow)
 ![Kompetisi](https://img.shields.io/badge/GEMASTIK%20XIX-Divisi%209-red)
-![Lisensi](https://img.shields.io/badge/license-lihat%20LICENSE-brightgreen)
+![Lisensi](https://img.shields.io/badge/license-Apache--2.0-brightgreen)
 
 ---
 
@@ -149,7 +149,7 @@ test: tambah unit test preprocessing CLAHE
 
 ## Lisensi
 
-Lisensi belum final — tetapkan sebelum submission. Pertimbangan: kode `Interface-Display` memuat PySide6 (LGPL-3.0), sehingga repo itu praktis mengikuti LGPL-3.0; repo model & hardware bisa memakai lisensi berbeda (mis. MIT/Apache-2.0 untuk kode, CC-BY untuk dokumen/desain). Cantumkan keputusan final di berkas `LICENSE` masing-masing repo.
+Repo hub `MoodIn-master` dirilis di bawah **Apache License 2.0** (lihat berkas [`LICENSE`](LICENSE)) — permisif dengan proteksi paten eksplisit. Catatan lintas-repo: kode `Interface-Display` memuat PySide6 (LGPL-3.0) sehingga repo itu praktis mengikuti LGPL-3.0; `Software-Architecture` dan `Hardware-Connections` dapat menyelaraskan ke Apache-2.0 kecuali ada dependency copyleft yang mengharuskan lisensi lain. Cantumkan keputusan final di berkas `LICENSE` masing-masing repo.
 
 ## Referensi
 
