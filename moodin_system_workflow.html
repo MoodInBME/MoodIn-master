@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoodIn - 6 Stage Workflow & Closed-Loop Architecture (Precision Aligned)</title>
+  <title>MoodIn - Gambar 4.1 Diagram Alur Kerja Sistem (Revisi 2)</title>
   <style>
     :root {
       --text-primary: #0F172A;
@@ -22,15 +22,15 @@
       --surface-3: #505357;
       --border: #CBD5E1;
       --border-strong: #94A3B8;
-      
-      /* Warna Spesifik 6 Tahapan (Sesuai Proposal) */
-      --stage-1: #2563EB; /* Blue */
-      --stage-2: #0D9488; /* Teal / Green */
-      --stage-3: #EA580C; /* Orange */
-      --stage-4: #7C3AED; /* Purple */
-      --stage-5: #0EA5E9; /* Sky Blue */
-      --stage-6: #E11D48; /* Rose / Pink */
-      --fb-loop: #0D9488; /* Teal khusus Jalur Feedback Loop */
+
+      --stage-1: #2563EB;
+      --stage-2: #0D9488;
+      --stage-3: #EA580C;
+      --stage-4: #7C3AED;
+      --stage-5: #0EA5E9;
+      --stage-6: #E11D48;
+      --fb-loop: #0D9488;
+      --ttv-loop: #7C3AED;
     }
 
     * {
@@ -47,7 +47,7 @@
     }
 
     .workflow-container {
-      max-width: 880px;
+      max-width: 960px;
       width: 100%;
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -56,49 +56,27 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
 
-    /* Layout Utama: Kolom Kiri (Feedback Lane) + Kolom Kanan (Pipeline Utama) */
-    .schematic-wrapper {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-    }
+    .schematic-wrapper { display: flex; align-items: stretch; gap: 0; }
 
-    /* KANAL ROUTING UMPAN BALIK (KIRI) */
     .fb-left-lane {
-      width: 32px;
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-      position: relative;
+      width: 32px; display: flex; flex-direction: column;
+      flex-shrink: 0; position: relative;
     }
-
     .fb-top-corner {
-      height: 22px; /* Presisi sejajar dengan Top Bridge */
+      height: 22px;
       border-top: 1.5px dashed var(--fb-loop);
       border-left: 1.5px dashed var(--fb-loop);
       border-top-left-radius: 8px;
     }
-
     .fb-vertical-line {
-      flex: 1;
-      border-left: 1.5px dashed var(--fb-loop);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      flex: 1; border-left: 1.5px dashed var(--fb-loop);
+      display: flex; align-items: center; justify-content: center; position: relative;
     }
-
     .fb-vertical-text {
-      transform: rotate(-90deg);
-      white-space: nowrap;
-      font-size: 8.5px;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      color: var(--fb-loop);
-      background: var(--surface-1);
-      padding: 0 6px;
+      transform: rotate(-90deg); white-space: nowrap;
+      font-size: 8.5px; font-weight: 600; letter-spacing: 0.8px;
+      color: var(--fb-loop); background: var(--surface-1); padding: 0 6px;
     }
-
     .fb-bottom-corner {
       height: 20px;
       border-bottom: 1.5px dashed var(--fb-loop);
@@ -106,120 +84,67 @@
       border-bottom-left-radius: 8px;
     }
 
-    /* PIPELINE UTAMA (KANAN) */
     .main-pipeline {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding-left: 8px;
+      flex: 1; display: flex; flex-direction: column;
+      padding-left: 8px; min-width: 0;
     }
 
     .stage-box {
-      border-radius: 8px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      background: #FFFFFF;
+      border-radius: 8px; padding: 10px;
+      display: flex; flex-direction: column; gap: 6px; background: #FFFFFF;
     }
-
     .stage-title {
-      font-weight: 600;
-      font-size: 11px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 2px;
+      font-weight: 600; font-size: 11px; text-align: center;
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;
     }
-
     .node {
-      border-radius: 6px;
-      padding: 8px 6px;
-      text-align: center;
-      font-size: 11px;
-      font-weight: 500;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      line-height: 1.3;
+      border-radius: 6px; padding: 8px 6px; text-align: center;
+      font-size: 11px; font-weight: 500; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; line-height: 1.3;
     }
+    .node-sub { font-size: 9px; opacity: 0.85; font-weight: 400; margin-top: 2px; }
 
-    .node-sub {
-      font-size: 9px;
-      opacity: 0.85;
-      font-weight: 400;
-      margin-top: 2px;
-    }
+    .arrow-h { display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
+    .arrow-v { display: flex; justify-content: center; align-items: center; color: var(--text-muted); padding: 4px 0; }
 
-    .arrow-h {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .flex-row { display: flex; justify-content: space-between; align-items: stretch; gap: 8px; }
 
-    .arrow-v {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: var(--text-muted);
-      padding: 4px 0;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .flex-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-      gap: 8px;
-    }
-
-    /* Spesifik Styling Node */
     .bg-accent { background: var(--fill-accent); color: var(--on-accent); border: 1px solid #BFDBFE; }
     .bg-success { background: var(--fill-success); color: var(--on-success); border: 1px solid #BBF7D0; }
     .bg-warning { background: var(--fill-warning); color: var(--on-warning); border: 1px solid #FEF08A; }
     .bg-danger { background: var(--fill-danger); color: var(--on-danger); border: 1px solid #FECACA; }
     .bg-neutral { background: var(--surface-3); color: var(--text-secondary); border: 1px solid var(--border-strong); }
-    
+
     .bg-model-rppg { background: #1D4ED8; color: #FFFFFF; font-weight: 600; border: 1px solid #1E40AF; }
     .bg-model-gcn { background: #5B21B6; color: #FFFFFF; font-weight: 600; border: 1px solid #4C1D95; }
     .text-yellow { color: #FDE68A; }
 
-    /* Grid Khusus Baris 1 & Top Bridge */
-    .row-1-grid {
-      display: grid;
-      grid-template-columns: 1fr 24px 1.1fr 24px 1fr;
-      gap: 6px;
-    }
+    .row-1-grid { display: grid; grid-template-columns: 1fr 24px 1.1fr 24px 1fr; gap: 6px; }
+    .row-3-grid { display: grid; grid-template-columns: 250px 24px 1fr; gap: 6px; }
 
-    /* Grid Khusus Baris 3 & Panah dari Baris 2 ke 3 */
-    .row-3-grid {
-      display: grid;
-      grid-template-columns: 240px 24px 1fr;
-      gap: 6px;
+    .lane-label {
+      font-size: 8px; font-weight: 700; letter-spacing: 0.4px;
+      color: var(--ttv-loop); background: var(--surface-1); padding: 0 4px;
     }
+    .fork-label {
+      position: absolute; font-size: 8px; font-weight: 600; color: var(--stage-3);
+      background: var(--surface-1); padding: 0 4px; white-space: nowrap;
+    }
+    .tri { color: var(--text-muted); font-size: 13px; font-weight: bold; line-height: 1; }
   </style>
 </head>
 <body>
 
 <div class="workflow-container">
 
-  <!-- HEADER -->
   <div style="text-align: center; margin-bottom: 16px;">
-    <h1 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0 0 4px;">MOODIN — ARSITEKTUR dan ALUR KERJA SISTEM (6 STAGES)</h1>
-    <p style="font-size: 11px; color: var(--text-muted); margin: 0;">GEMASTIK 2026 · Divisi 9 (Piranti Cerdas dan IoT) · Smart Mirror berbasis GCN dan rPPG</p>
+    <h1 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0 0 4px;">MOODIN &mdash; ARSITEKTUR dan ALUR KERJA SISTEM (6 STAGES)</h1>
+    <p style="font-size: 11px; color: var(--text-muted); margin: 0;">GEMASTIK 2026 &middot; Divisi 9 (Piranti Cerdas dan IoT) &middot; Smart Mirror berbasis GCN dan rPPG</p>
   </div>
 
-  <!-- SCHEMATIC WRAPPER (LEFT FEEDBACK ROUTE + RIGHT PIPELINE) -->
   <div class="schematic-wrapper">
 
-    <!-- KOLOM KIRI: JALUR UMPAN BALIK FISIK -->
     <div class="fb-left-lane">
       <div class="fb-top-corner"></div>
       <div class="fb-vertical-line">
@@ -228,209 +153,270 @@
       <div class="fb-bottom-corner"></div>
     </div>
 
-    <!-- KOLOM KANAN: PIPELINE UTAMA -->
     <div class="main-pipeline">
 
-      <!-- TOP BRIDGE: JALUR ATAS MENUKIK KE TAHAP 2 -->
+      <!-- TOP BRIDGE -->
       <div class="row-1-grid" style="height: 22px; align-items: flex-end; margin-bottom: 4px;">
-        <!-- Over Stage 1: Menghubungkan dari Left Lane -->
         <div style="border-top: 1.5px dashed var(--fb-loop); height: 100%; margin-left: -8px;"></div>
-        <!-- Over Arrow 1 -->
         <div style="border-top: 1.5px dashed var(--fb-loop); height: 100%;"></div>
-        <!-- Over Stage 2: Berbelok menukik turun ke Muat Profil Mood Personal -->
         <div style="display: flex; flex-direction: column; align-items: center; height: 100%;">
           <div style="width: 50%; border-top: 1.5px dashed var(--fb-loop); border-right: 1.5px dashed var(--fb-loop); border-top-right-radius: 8px; flex: 1; align-self: flex-start;"></div>
-          <span style="color: var(--fb-loop); font-size: 12px; line-height: 0.5; font-weight: bold; margin-bottom: -5px;">▼</span>
+          <span style="color: var(--fb-loop); font-size: 12px; line-height: 0.5; font-weight: bold; margin-bottom: -5px;">&#9660;</span>
         </div>
-        <!-- Over Arrow 2 -->
         <div></div>
-        <!-- Over Stage 3 -->
         <div></div>
       </div>
 
-      <!-- BARIS 1: TAHAP 1, TAHAP 2, TAHAP 3 -->
+      <!-- BARIS 1 -->
       <div class="row-1-grid" style="align-items: stretch;">
-        
-        <!-- TAHAP 1 -->
+
         <div class="stage-box" style="border: 1.5px dashed var(--stage-1);">
           <span class="stage-title" style="color: var(--stage-1);">1. Input dan Hardware</span>
           <div class="node bg-accent" style="flex: 1;">
             Sistem MoodIn Aktif
-            <span class="node-sub">(RasPi 5)</span>
+            <span class="node-sub">Jetson Orin Nano Super 8GB</span>
           </div>
           <div class="node bg-accent" style="flex: 1;">
             Akuisisi Video Wajah
-            <span class="node-sub">(IMX708 NoIR)</span>
+            <span class="node-sub">Arducam IMX477 RGB &middot; Lensa 55&deg; &middot; 30 fps</span>
           </div>
         </div>
 
-        <!-- ARROW 1 -> 2 -->
         <div class="arrow-h">
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 7h15M10 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
-        <!-- TAHAP 2 (TARGET UMPAN BALIK) -->
         <div class="stage-box" style="border: 1.5px dashed var(--stage-2); background: #F0FDF4;">
           <span class="stage-title" style="color: var(--stage-2);">2. Authentication Gate</span>
           <div class="node bg-accent" style="flex: 1;">
             Deteksi dan Verifikasi Wajah
-            <span class="node-sub">Biometrik Tanpa Kontak</span>
+            <span class="node-sub">Face Embedding &middot; Kemiripan Kosinus &middot; On-Device</span>
           </div>
           <div class="node bg-success" style="flex: 1; border: 1.5px solid var(--on-success); box-shadow: 0 0 0 2px rgba(22, 101, 52, 0.15); font-weight: 600;">
             Muat Profil Mood Personal
             <span class="node-sub" style="font-weight: 500;">Parameter Baseline Individu</span>
           </div>
+          <div class="node" style="background: #FFFFFF; color: var(--stage-2); border: 1px dashed var(--stage-2); font-size: 9.5px; padding: 5px 4px;">
+            Tidak dikenali &rarr; Mode Tamu
+            <span class="node-sub">Tampil tanpa penyimpanan data</span>
+          </div>
         </div>
 
-        <!-- ARROW 2 -> 3 -->
         <div class="arrow-h">
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 7h15M10 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
 
-        <!-- TAHAP 3 -->
-        <div class="stage-box" style="border: 1.5px dashed var(--stage-3); justify-content: center;">
+        <div class="stage-box" style="border: 1.5px dashed var(--stage-3);">
           <span class="stage-title" style="color: var(--stage-3);">3. Pre-Processing</span>
-          <div class="node bg-accent" style="padding: 16px 6px;">
-            Face Detection dan Normalisasi CLAHE
-            <span class="node-sub">Khusus Jalur Geometris / AU</span>
+          <div class="node bg-accent" style="flex: 1;">
+            Face Detection dan Tracking
+            <span class="node-sub">Bersama untuk kedua jalur</span>
+          </div>
+          <div class="node bg-accent" style="flex: 1;">
+            Normalisasi CLAHE
+            <span class="node-sub">Hanya jalur geometris</span>
           </div>
         </div>
 
       </div>
 
-      <!-- DOWN ARROW (TAHAP 3 -> TAHAP 4): PERSIS DI BAWAH TAHAP 3 -->
-      <div class="row-1-grid">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div class="arrow-v">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M7 1v13M1 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+      <!-- FORK TAHAP 3 -> DUA JALUR TAHAP 4 -->
+      <div style="position: relative; height: 46px;">
+        <div style="position: absolute; left: 85%; top: 0; height: 20px; border-left: 2px solid var(--text-muted);"></div>
+        <div style="position: absolute; left: 7%; right: 15%; top: 20px; border-top: 2px solid var(--text-muted);"></div>
+        <div style="position: absolute; left: 7%; top: 20px; height: 16px; border-left: 2px solid var(--text-muted);"></div>
+        <span class="tri" style="position: absolute; left: 7%; top: 32px; transform: translateX(-50%);">&#9660;</span>
+        <div style="position: absolute; left: 58%; top: 20px; height: 16px; border-left: 2px solid var(--text-muted);"></div>
+        <span class="tri" style="position: absolute; left: 58%; top: 32px; transform: translateX(-50%);">&#9660;</span>
+        <span class="fork-label" style="left: 9%; top: 22px;">Frame RGB mentah (tanpa CLAHE)</span>
+        <span class="fork-label" style="left: 60%; top: 22px;">Frame ter-CLAHE</span>
       </div>
 
-      <!-- BARIS 2: TAHAP 4 (DUAL-PATHWAY FEATURE EXTRACTION) -->
+      <!-- BARIS 2: TAHAP 4 -->
       <div class="stage-box" style="border: 1.5px dashed var(--stage-4); margin-bottom: 4px;">
         <span class="stage-title" style="color: var(--stage-4);">4. Feature Extraction Pathways (Dual-Pathway)</span>
-        
+
         <div class="flex-row" style="align-items: center;">
-          
-          <!-- Jalur Fisiologis -->
-          <div style="flex: 1; display: flex; align-items: center; gap: 6px;">
-            <div class="node bg-accent" style="flex: 1; min-height: 58px;">
+
+          <div style="flex: 1; display: flex; align-items: center; gap: 5px; min-width: 0;">
+            <div class="node bg-accent" style="flex: 1; min-height: 64px;">
               Ekstraksi ROI
               <span class="node-sub">Dahi / Pipi Atas</span>
             </div>
             <svg width="12" height="10" viewBox="0 0 12 10" fill="none" style="flex-shrink:0;"><path d="M1 5h8M6 1l4 4-4 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <div class="node bg-model-rppg" style="flex: 1.2; min-height: 58px;">
+            <div class="node bg-model-rppg" style="flex: 1.15; min-height: 64px;">
               Model STC-rPPG
               <span class="node-sub text-yellow">Spatiotemporal-Channel</span>
             </div>
             <svg width="12" height="10" viewBox="0 0 12 10" fill="none" style="flex-shrink:0;"><path d="M1 5h8M6 1l4 4-4 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <div class="node bg-accent" style="flex: 1.2; min-height: 58px;">
+            <div class="node bg-accent" style="flex: 1.05; min-height: 64px;">
               Sinyal BVP
-              <span class="node-sub" style="font-weight: 600; color: #0F172A;">HRV dan BRV (Respirasi)</span>
+              <span class="node-sub">Pita 0,7&ndash;4 Hz</span>
+            </div>
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none" style="flex-shrink:0;"><path d="M1 5h8M6 1l4 4-4 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div class="node bg-accent" style="flex: 1.2; min-height: 64px; border: 1.5px solid var(--ttv-loop);">
+              Ekstraksi TTV
+              <span class="node-sub" style="font-weight: 600; color: #0F172A;">HR &middot; HRV (RMSSD/SDNN/pNN50) &middot; Laju Napas &middot; SNR</span>
             </div>
           </div>
 
-          <!-- Divider -->
-          <div style="width: 2px; background: var(--border-strong); height: 70px; opacity: 1.0; margin: 0 4px;"></div>
+          <div style="width: 2px; background: var(--border-strong); height: 76px; margin: 0 4px;"></div>
 
-          <!-- Jalur Biomekanis -->
-          <div style="flex: 1; display: flex; align-items: center; gap: 6px;">
-            <div class="node bg-accent" style="flex: 1; min-height: 58px;">
-              468 Landmarks
-              <span class="node-sub">Topologi MediaPipe</span>
+          <div style="flex: 1; display: flex; align-items: center; gap: 5px; min-width: 0;">
+            <div class="node bg-accent" style="flex: 1.1; min-height: 64px;">
+              Ekstraksi Landmark
+              <span class="node-sub">468 titik MediaPipe &rarr; 68 titik iBUG</span>
             </div>
             <svg width="12" height="10" viewBox="0 0 12 10" fill="none" style="flex-shrink:0;"><path d="M1 5h8M6 1l4 4-4 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <div class="node bg-model-gcn" style="flex: 1.2; min-height: 58px;">
+            <div class="node bg-model-gcn" style="flex: 1.15; min-height: 64px;">
               Model ST-GCN
               <span class="node-sub text-yellow">Graph-Tran Backbone</span>
             </div>
             <svg width="12" height="10" viewBox="0 0 12 10" fill="none" style="flex-shrink:0;"><path d="M1 5h8M6 1l4 4-4 4" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <div class="node bg-accent" style="flex: 1.2; min-height: 58px;">
-              AU Intensity
-              <span class="node-sub">AU04, 07, 12, 25</span>
+            <div class="node bg-accent" style="flex: 1.2; min-height: 64px;">
+              Fitur Ekspresi Dinamis
+              <span class="node-sub">Skor Valence&ndash;Arousal &middot; AU04, 07, 12, 25</span>
             </div>
           </div>
 
         </div>
       </div>
 
-      <!-- DOWN ARROW (TAHAP 4 -> TAHAP 5): PERSIS DI ATAS TAHAP 5 -->
-      <div class="row-3-grid">
-        <div class="arrow-v">
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M7 1v13M1 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div></div>
-        <div></div>
-      </div>
+      <!-- BLOK RELATIF: KONEKTOR + BARIS 3 + JALUR TTV DI KANAN -->
+      <div style="position: relative; padding-right: 30px;">
+        <div style="position: absolute; left: 43%; top: 0; height: 10px; border-left: 1.5px dashed var(--ttv-loop);"></div>
+        <div style="position: absolute; left: 43%; right: 8px; top: 10px; border-top: 1.5px dashed var(--ttv-loop);"></div>
+        <div style="position: absolute; right: 8px; top: 10px; bottom: 0; border-right: 1.5px dashed var(--ttv-loop);"></div>
+        <span class="lane-label" style="position: absolute; left: 46%; top: 3px;">TANDA VITAL &mdash; TIDAK MELALUI FUSI DAN KLASIFIKASI</span>
 
-      <!-- BARIS 3: TAHAP 5 & TAHAP 6 -->
-      <div class="row-3-grid" style="align-items: stretch;">
-
-        <!-- TAHAP 5 -->
-        <div class="stage-box" style="border: 1.5px dashed var(--stage-5); justify-content: space-between;">
-          <span class="stage-title" style="color: var(--stage-5);">5. Fusion dan Klasifikasi</span>
-          <div class="node bg-accent">
-            Multimodal Late Fusion
-            <span class="node-sub">Asynchronous Feature Buffer</span>
+        <div class="row-3-grid" style="padding-top: 12px;">
+          <div class="arrow-v">
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="none"><path d="M7 1v13M1 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="node bg-accent">
-            Klasifikasi MLP + Dropout
-            <span class="node-sub">Dual-Head: Regresi V-A dan 5-Class</span>
-          </div>
-          <div class="node bg-accent" style="background: #f6a13a; border-color: #FFEDD5; color: #f8f6f5; font-weight: 600;">
-            Fungsi Argmax (Probabilitas)
-          </div>
+          <div></div>
+          <div></div>
         </div>
 
-        <div class="arrow-h" style="padding: 0 4px;">
-          <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 7h15M10 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="row-3-grid" style="align-items: stretch;">
 
-        <!-- TAHAP 6 -->
-        <div class="stage-box" style="border: 1.5px dashed var(--stage-6);">
-          <span class="stage-title" style="color: var(--stage-6);">6. Personal Wellness Coach: Output dan IoT</span>
-          
-          <!-- 5 Kelas Output -->
-          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-bottom: 4px;">
-            <div class="node bg-success" style="padding: 6px 2px;">Ceria</div>
-            <div class="node bg-accent" style="padding: 6px 2px; background: #0287df; color: #d3eaf6; border-color: #BAE6FD;">Rileks</div>
-            <div class="node bg-warning" style="padding: 6px 2px;">Cemas</div>
-            <div class="node bg-danger" style="padding: 6px 2px;">Tertekan</div>
-            <div class="node bg-neutral" style="padding: 6px 2px;">Netral</div>
-          </div>
-
-          <!-- Action & IoT Cloud -->
-          <div class="grid-2" style="flex: 1;">
-            <div class="node bg-accent" style="border-color: #FBCFE8; background: #FDF2F8; color: #BE185D;">
-              Intervensi Mikro (Edge Screen)
-              <span class="node-sub">Breathing guide, Affirmation text</span>
+          <div class="stage-box" style="border: 1.5px dashed var(--stage-5); justify-content: space-between;">
+            <span class="stage-title" style="color: var(--stage-5);">5. Fusion dan Klasifikasi</span>
+            <div class="node bg-accent" style="flex: 1;">
+              Multimodal Late Fusion
+              <span class="node-sub">VA-Bridge &middot; Asynchronous Feature Buffer</span>
             </div>
-            <div class="node bg-accent" style="border-color: #DDD6FE; background: #F5F3FF; color: #6D28D9;">
-              MQTT Gateway → Cloud DB
-              <span class="node-sub">7-Day Mood Trend Tracker dan Agregasi</span>
+            <div class="node bg-accent" style="flex: 1;">
+              Normalisasi thd Baseline Personal
+              <span class="node-sub">Skor terstandar per pengguna</span>
+            </div>
+            <div class="node bg-accent" style="flex: 1; background: #f6a13a; border-color: #FFEDD5; color: #f8f6f5; font-weight: 600;">
+              Fungsi Argmax (Probabilitas)
+              <span class="node-sub" style="color: #FFF7ED;">Pemetaan Ruang V&ndash;A Russell</span>
             </div>
           </div>
-        </div>
 
+          <div class="arrow-h" style="padding: 0 4px;">
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 7h15M10 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div class="stage-box" style="border: 1.5px dashed var(--stage-6); justify-content: space-between;">
+            <span class="stage-title" style="color: var(--stage-6);">6a. Personal Wellness Coach: Output di Perangkat</span>
+
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px;">
+              <div class="node bg-success" style="padding: 7px 2px;">Ceria</div>
+              <div class="node bg-accent" style="padding: 7px 2px; background: #0287df; color: #d3eaf6; border-color: #BAE6FD;">Rileks</div>
+              <div class="node bg-warning" style="padding: 7px 2px;">Cemas</div>
+              <div class="node bg-danger" style="padding: 7px 2px;">Tertekan</div>
+              <div class="node bg-neutral" style="padding: 7px 2px;">Netral</div>
+            </div>
+
+            <div class="grid-2" style="flex: 1;">
+              <div class="node bg-accent" style="border-color: #FBCFE8; background: #FDF2F8; color: #BE185D;">
+                Intervensi Mikro (Layar Cermin)
+                <span class="node-sub">Breathing guide &middot; Affirmation text</span>
+              </div>
+              <div class="node bg-accent" style="border-color: #FBCFE8; background: #FDF2F8; color: #BE185D;">
+                Sapaan Personal dan Ringkasan Harian
+                <span class="node-sub">Tetap berfungsi saat luring</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      <!-- BOTTOM BRIDGE: JALUR KALIBRASI MINIMALIS (TAHAP 6 -> LEFT LANE) -->
+      <!-- MERGE: OUTPUT 6a + JALUR TTV -> TAHAP 6b -->
+      <div style="position: relative; height: 36px; padding-right: 30px;">
+        <div style="position: absolute; left: 62%; top: 0; height: 16px; border-left: 2px solid var(--text-muted);"></div>
+        <div style="position: absolute; right: 8px; top: 0; height: 16px; border-left: 1.5px dashed var(--ttv-loop);"></div>
+        <div style="position: absolute; left: 15%; right: 8px; top: 16px; border-top: 2px solid var(--text-muted);"></div>
+        <div style="position: absolute; left: 15%; top: 16px; height: 14px; border-left: 2px solid var(--text-muted);"></div>
+        <span class="tri" style="position: absolute; left: 15%; top: 26px; transform: translateX(-50%);">&#9660;</span>
+        <span style="position: absolute; left: 27%; top: 8px; font-size: 8px; font-weight: 700; letter-spacing: 0.4px; color: var(--text-muted); background: var(--surface-1); padding: 0 5px;">KLASIFIKASI MOOD + TANDA VITAL</span>
+      </div>
+
+      <!-- BARIS 4: TAHAP 6b -->
+      <div class="stage-box" style="border: 1.5px dashed var(--stage-6);">
+        <span class="stage-title" style="color: var(--stage-6);">6b. Lapisan IoT dan Kanal Penyajian</span>
+
+        <div style="display: flex; align-items: stretch; gap: 6px;">
+
+          <div class="node bg-accent" style="flex: 1.05; border-color: #DDD6FE; background: #F5F3FF; color: #6D28D9;">
+            MQTT Gateway
+            <span class="node-sub">TLS port 8883 &middot; LWT &middot; Payload JSON numerik</span>
+            <span class="node-sub" style="font-weight: 600; color: #5B21B6;">Tanpa citra wajah / sinyal mentah</span>
+          </div>
+
+          <div class="arrow-h">
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 7h15M10 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div style="flex: 1.35; display: flex; flex-direction: column; gap: 4px; border: 1.5px solid var(--border-strong); border-radius: 8px; padding: 6px; background: var(--surface-2);">
+            <span style="font-size: 9.5px; font-weight: 700; text-align: center; color: var(--text-primary); letter-spacing: 0.3px;">BASIS DATA TIME-SERIES</span>
+            <div class="node bg-accent" style="padding: 6px 4px; font-size: 10px;">
+              Rekaman Klasifikasi Mood
+              <span class="node-sub">Label &middot; Confidence &middot; Koordinat V&ndash;A</span>
+            </div>
+            <div class="node bg-accent" style="padding: 6px 4px; font-size: 10px; border: 1.5px solid var(--ttv-loop);">
+              Rekaman Tanda Vital (TTV)
+              <span class="node-sub">HR &middot; HRV &middot; Laju Napas &middot; Indeks Kualitas Sinyal</span>
+            </div>
+          </div>
+
+          <div class="arrow-h">
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M1 7h15M10 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div style="flex: 1.45; display: flex; flex-direction: column; gap: 4px;">
+            <div class="node bg-accent" style="flex: 1; padding: 6px 4px; font-size: 10px;">
+              Aplikasi Pendamping (Mobile)
+              <span class="node-sub">Autentikasi akun &middot; Penautan QR &middot; Tren mood dan TTV</span>
+            </div>
+            <div class="node bg-accent" style="flex: 1; padding: 6px 4px; font-size: 10px;">
+              Dasbor Web
+              <span class="node-sub">Agregasi 7 hari &middot; Akses jarak jauh &middot; Ekspor ke konselor</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BOTTOM BRIDGE -->
       <div style="height: 20px; display: flex; align-items: flex-start; margin-top: 4px;">
-        <!-- Horizontal line meeting fb-bottom-corner -->
         <div style="flex: 1; border-bottom: 1.5px dashed var(--fb-loop); height: 100%; display: flex; align-items: flex-end; justify-content: center;">
           <span style="font-size: 9.5px; color: var(--fb-loop); font-weight: 600; background: var(--surface-1); padding: 0 10px; margin-bottom: -6px; letter-spacing: 0.3px;">
-            ◄── KALIBRASI ASINKRON BASELINE MOOD PERSONAL ──◄
+            &#9668;&#9472;&#9472; KALIBRASI ASINKRON BASELINE MOOD PERSONAL (7 HARI) &#9472;&#9472;&#9668;
           </span>
         </div>
-        <!-- Right turn going up to Stage 6 -->
-        <div style="width: 140px; height: 100%; border-bottom: 1.5px dashed var(--fb-loop); border-right: 1.5px dashed var(--fb-loop); border-bottom-right-radius: 8px; margin-right: 80px;"></div>
+        <div style="width: 120px; height: 100%; border-bottom: 1.5px dashed var(--fb-loop); border-right: 1.5px dashed var(--fb-loop); border-bottom-right-radius: 8px;"></div>
       </div>
 
     </div>
 
+  </div>
+
+  <div style="text-align: center; margin-top: 14px;">
+    <span style="font-size: 11px; color: var(--text-primary);">Gambar 4.1. Diagram Alur Kerja Sistem MoodIn</span>
   </div>
 
 </div>
