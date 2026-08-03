@@ -14,8 +14,8 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/), dan p
 - Dokumen `docs/roadmap.md`, `docs/team.md`, `docs/sdgs.md`.
 
 ### Changed
-- **Keputusan hardware edge**: Raspberry Pi 5 ditetapkan sebagai board edge **utama** untuk Cross-Eval 2. Migrasi ke Jetson Orin Nano Super diposisikan sebagai **rencana peningkatan** (setelah pendampingan teknis tersedia). README keempat repo diselaraskan dengan keputusan ini.
-- Kamera difinalkan ke **Arducam IMX477 (RGB)** dengan base M12, FoV kerja **65 deg** (menggantikan asumsi NoIR awal).
+- **Keputusan hardware edge**: Jetson Orin Nano Super ditetapkan sebagai board edge **utama** untuk Cross-Eval 2. Migrasi ke Jetson Orin Nano Super diposisikan sebagai **rencana peningkatan** (setelah pendampingan teknis tersedia). README keempat repo diselaraskan dengan keputusan ini.
+- Kamera difinalkan ke **Arducam IMX477 (RGB)** dengan base M12, FoV kerja **55 deg** (menggantikan asumsi NoIR awal).
 - Target Python diseragamkan ke **3.12** lintas repo.
 
 ### Pending

@@ -31,7 +31,7 @@ Apa yang benar-benar terjadi (sertakan pesan error lengkap bila ada).
 
 ## Lingkungan
 
-- Board / mesin: <!-- Raspberry Pi 5 (Debian Trixie) / laptop dev / Jetson (rencana) -->
+- Board / mesin: <!-- Jetson Orin Nano Super (Ubuntu 24.04) / laptop dev / Jetson (rencana) -->
 - Python: <!-- mis. 3.12 -->
 - Versi paket relevan: <!-- torch, mediapipe, opencv, paho-mqtt, PySide6 -->
 - Kamera / driver: <!-- Arducam IMX477, dsb. -->

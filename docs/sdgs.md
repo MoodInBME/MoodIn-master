@@ -20,7 +20,7 @@ MoodIn berkontribusi pada tiga Tujuan Pembangunan Berkelanjutan (Sustainable Dev
 
 - Target **9.5** (memperkuat riset ilmiah dan kapasitas teknologi).
 - Kontribusi MoodIn: inovasi **edge-AI** yang memadukan Graph Convolutional Network untuk analisis ekspresi dan remote photoplethysmography (rPPG) untuk sinyal fisiologis contactless, dijalankan on-device demi privasi.
-- Arsitektur IoT edge-to-cloud yang hemat sumber daya (target Raspberry Pi 5, rencana peningkatan Jetson) menunjukkan kelayakan inovasi kesehatan digital yang terjangkau dan dapat diskalakan (model B2B untuk klinik/kampus/korporat).
+- Arsitektur IoT edge-to-cloud yang hemat sumber daya (target Jetson Orin Nano Super, rencana peningkatan Jetson) menunjukkan kelayakan inovasi kesehatan digital yang terjangkau dan dapat diskalakan (model B2B untuk klinik/kampus/korporat).
 
 ## Ringkasan Pemetaan
 
