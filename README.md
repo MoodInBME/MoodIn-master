@@ -75,10 +75,10 @@ Sumber kebenaran `ipc_contract_v1.json`.
 | --- | --- | --- |
 | Perakitan hardware & kamera | Hardware-Connections | _On-going_ |
 | Model STC-rPPG | Software-Architecture | _Iterasi Lokal_ |
-| Model ST-GCN / Graph-Tran | Software-Architecture | _Pelatihan CK+_ |
-| Fusi multimodal (VA-bridge) | Software-Architecture | _Kalibrasi bobot_ |
-| UI kiosk (PySide6 + QML) | Interface-Display | _Desain Figma_ |
-| `stgcn_va.onnx` | Software-Architecture | _Tersedia_ |
+| Model ST-GCN / Graph-Tran | Software-Architecture | _Arsitektur selesai, bobot dummy tersedia_ |
+| Fusi multimodal (VA-bridge) | Software-Architecture | _Implementasi selesai_ |
+| UI kiosk (PySide6 + QML) | Interface-Display | _Desain Figma in progress_ |
+| `stgcn_va.onnx` | Software-Architecture | _Belum (menunggu pelatihan)_ |
 | `mock_inference_publisher.py` | Software-Architecture | _Tersedia (UI bisa jalan)_ |
 
 ## Cara Berkontribusi
