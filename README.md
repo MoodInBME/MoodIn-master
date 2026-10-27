@@ -1,104 +1,74 @@
-# MoodIn: Smart Mirror untuk Klasifikasi Mood
+# MoodIn
 
-> Berbasis Graph Convolutional Network + remote Photoplethysmography sebagai Personal Wellness Coach
->
-> GEMASTIK XIX — Divisi 9 (Piranti Cerdas dan IoT) · Tim VisionaryX · Institut Teknologi Sepuluh Nopember
+Repo dokumen untuk Tugas Akhir **MoodIn**: sistem cermin berbasis kamera untuk memperkirakan tingkat stres dan kategori _mood_ penggunanya tanpa kontak. Repo ini tidak memuat kode yang dijalankan.
 
-![Status](https://img.shields.io/badge/status-on--going-yellow)
-![Kompetisi](https://img.shields.io/badge/GEMASTIK%20XIX-Divisi%209-red)
-![Lisensi](https://img.shields.io/badge/license-Apache--2.0-brightgreen)
+![Tahap](https://img.shields.io/badge/tahap-preliminary%20research-yellow)
+![Isi](https://img.shields.io/badge/isi-dokumen%20saja-lightgrey)
+
+> **Penulis:** Jeremia Christ Immanuel Manalu\
+> **Pembimbing:** Nada Fitrieyatul Hikmah, S.T., M.T. dan Nabila Puspita Firdi, S.T., M.Si.\
+> Departemen Teknik Biomedik, Institut Teknologi Sepuluh Nopember.
 
 ---
 
 ## Ringkasan
 
-Kesehatan mental merupakan salah satu tantangan pembangunan manusia yang paling mendesak di Indonesia saat ini. Survei Kesehatan Indonesia (SKI) 2023 mencatat prevalensi depresi nasional dengan kelompok usia 15–24 tahun (Generasi Z) menunjukkan prevalensi tertinggi. Sistem kami mengatasi ini dengan menyediakan intervensi proaktif tanpa gesekan (frictionless).
+Kamera di balik cermin dua arah merekam wajah pengguna. Sistem menghasilkan dua keluaran:
 
-## Masalah yang Diselesaikan
+| Keluaran        | Sumber informasi                                                            |
+| --------------- | --------------------------------------------------------------------------- |
+| Tingkat stres   | Sinyal denyut dari video wajah (rPPG) dan variabilitas denyut jantung (HRV) |
+| Kategori _mood_ | Gerak _landmark_ wajah                                                      |
 
-1. Bagaimana merancang sistem smart mirror yang mengklasifikasikan mood harian pengguna secara non-intrusive dan real-time?
-2. Bagaimana merepresentasikan mood ke dalam kerangka dimensional (valence–arousal) menggunakan Graph Convolutional Network?
-3. Bagaimana merancang mekanisme fusi multimodal yang menggabungkan fitur wajah (dinamika ekspresi) dan fisiologis (HRV dari rPPG)?
-4. Bagaimana merancang arsitektur edge AI yang menjaga privasi biometrik wajah (UU PDP No. 27/2022)?
+Prinsip yang berlaku di semua repo:
 
-## Cara Kerja Singkat
+- pemrosesan berjalan di perangkat, yaitu NVIDIA Jetson Orin Nano Super;
+- citra wajah tidak disimpan dan tidak dikirim ke luar perangkat; antarmodul hanya bertukar nilai numerik;
+- MoodIn adalah prototipe riset, **bukan alat diagnosis medis**.
 
-![Arsitektur Sistem](docs/assets/system-architecture.png)
-*(Arsitektur edge-to-cloud dengan fusi VA-Bridge)*
+Rincian rancangan (arsitektur, parameter, target, dan protokol pengambilan data) ada di proposal TA dan belum dipublikasikan. Judul TA masih dapat berubah mengikuti bimbingan.
 
-1. **Autentikasi & personalisasi** — aplikasi pendamping menghubungkan pengguna.
-2. **Akuisisi contactless** — video wajah direkam kamera Arducam IMX477 (RGB) di balik two-way mirror.
-3. **Ekstraksi fitur ganda** — ST-GCN mengestimasi valence–arousal secara paralel dengan STC-rPPG.
-4. **Fusi multimodal & klasifikasi (VA-bridge)** — satu argmax kuadran menghasilkan 5 kelas mood.
-5. **Personal wellness coach** — micro-intervention + visualisasi tren mood.
+## Peta repositori
 
-## Batas Tanggung Jawab 4 Repositori
+| Repo                                                                        | Peran pada fase TA                                                                                     | Status         |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | -------------- |
+| **MoodIn-master** (repo ini)                                                | Dokumen: peta repo, ADR, roadmap, kontrak antar-repo, arsip GEMASTIK                                   | Aktif          |
+| [Software-Architecture](https://github.com/MoodInBME/Software-Architecture) | Pemrosesan sinyal dan model: jalur fisiologis dan jalur wajah                                          | Aktif (M1)     |
+| [Hardware-Connections](https://github.com/MoodInBME/Hardware-Connections)   | Perangkat keras, serta integrasi dan _deployment_ di Jetson                                            | Aktif (M2)     |
+| [Interface-App](https://github.com/MoodInBME/Interface-App)                 | Aplikasi Flutter: tampilan cermin dan aplikasi pendamping Android                                      | Persiapan (M3) |
+| [Interface-Display](https://github.com/MoodInBME/Interface-Display)         | UI era GEMASTIK (PySide6 + QML, kiosk web)                                                             | Arsip          |
+| [.github](https://github.com/MoodInBME/.github)                             | Profil organisasi dan berkas komunitas bawaan: panduan kontribusi, kebijakan keamanan, templat _issue_ | Aktif          |
 
-| Repo | Fungsi Inti | TIDAK Memiliki |
-| --- | --- | --- |
-| **MoodIn-master** (repo ini) | Hub: dokumen, ADR, konvensi, kontrak IPC | Kode runtime |
-| [Software-Architecture](https://github.com/MoodInBME/Software-Architecture.git) | Model DL, fusi, pipeline data, evaluasi | Kode UI, skrip hardware |
-| [Hardware-Connections](https://github.com/MoodInBME/Hardware-Connections.git) | Wiring, kamera, protokol fisik, skrip bring-up | Model, UI |
-| [Interface-Display](https://github.com/MoodInBME/Interface-Display.git) | UI kiosk (PySide6+QML), aplikasi pendamping | Model, inferensi |
+Antar-repo tidak saling `import`. Modul berkomunikasi lewat MQTT di jaringan lokal sesuai kontrak pesan di [docs/ipc-contract.md](docs/ipc-contract.md).
 
-Aturan utama: **komunikasi antar-repo hanya lewat MQTT sesuai `ipc_contract_v1.json`.** Tidak ada `import` lintas repo.
+## Milestone
 
-## Keputusan Arsitektural (ADR)
+| Kode | Cakupan                                 | Status             |
+| ---- | --------------------------------------- | ------------------ |
+| M0   | Arsip GEMASTIK dan tata kelola repo     | Berjalan           |
+| M1   | Jalur fisiologis pada dataset sekunder  | Berikutnya         |
+| M2   | Perangkat keras dan pengujian di Jetson | Menunggu bimbingan |
+| M3   | Antarmuka Flutter                       | Belum mulai        |
+| M4   | Jalur wajah                             | Menunggu bimbingan |
+| M5   | Integrasi dan uji sistem                | Belum mulai        |
 
-| ID | Keputusan | Alasan |
-|---|---|---|
-| ADR-01 | Edge AI = **NVIDIA Jetson Orin Nano Super 8GB**, JetPack 7.2 | 67 TOPS INT8 untuk menjalankan 2 model neural simultan 30 fps. |
-| ADR-02 | Landmark iBUG-68, bukan MediaPipe 468 penuh | 68 simpul mengefisiensikan biaya adjacency graf. |
-| ADR-03 | Head regresi VA, bukan klasifikasi langsung | Memungkinkan fusi dengan arousal fisiologis pada ruang circumplex. |
-| ADR-04 | Late fusion, bukan early fusion | Memungkinkan degradasi anggun saat cahaya memburuk. |
-| ADR-05 | Autentikasi di aplikasi, personalisasi di cermin | Cermin tetap berfungsi mode tamu tanpa akun. |
-| ADR-06 | Protokol MQTT | UI butuh push (publish/subscribe); fitur Last Will and Testament (LWT). |
-| ADR-07 | Validasi subject-independent wajib | Mencegah kebocoran identitas subjek pelatihan. |
+Rincian di [docs/roadmap.md](docs/roadmap.md).
 
-## Kontrak Antar-Repo (MQTT v1.0.0)
+## Dokumen
 
-Komunikasi menggunakan satu broker MQTT (TLS, port 8883). 
-Sumber kebenaran `ipc_contract_v1.json`.
+| Berkas                                       | Isi                                                               |
+| -------------------------------------------- | ----------------------------------------------------------------- |
+| [docs/adr.md](docs/adr.md)                   | Catatan keputusan arsitektur (ADR) beserta statusnya pada fase TA |
+| [docs/roadmap.md](docs/roadmap.md)           | Milestone TA M0–M5 dan risiko yang dipantau                       |
+| [docs/team.md](docs/team.md)                 | Penulis, pembimbing, dan riwayat tim GEMASTIK                     |
+| [docs/ipc-contract.md](docs/ipc-contract.md) | Kontrak pesan MQTT v1.0.0 era GEMASTIK; versi TA menyusul         |
+| [CHANGELOG.md](CHANGELOG.md)                 | Riwayat perubahan repo ini dan ringkasan perubahan lintas repo    |
+| [docs/arsip-gemastik/](docs/arsip-gemastik/) | Proposal, slide, diagram, dan dokumen era GEMASTIK                |
 
-| Topik | Arah | Fungsi |
-|---|---|---|
-| `moodin/presence` | engine -> UI | (LWT) Status koneksi (online/offline) |
-| `moodin/signal/quality` | engine -> UI | Kualitas sinyal (face_detected, SNR) |
-| `moodin/inference/result` | engine -> UI | Mood_id, valence, arousal, HR, HRV |
-| `moodin/ui/command` | UI -> engine | Start, stop, recalibrate, logout |
+## Riwayat: GEMASTIK XIX 2026
 
-**Invarian Privasi:** Tidak ada citra mentah di topik mana pun. Hanya skalar numerik.
+MoodIn berawal dari proyek tim VisionaryX pada GEMASTIK XIX 2026, Divisi 9 (Piranti Cerdas, Sistem Benam, dan IoT). Versi itu menghasilkan 5 kategori _mood_ dari fusi dua jalur, memakai UI PySide6 + QML, dan MQTT dengan TLS. Isi era itu dibekukan dengan tag [`gemastik-xix-2026`](https://github.com/MoodInBME/MoodIn-master/tree/gemastik-xix-2026) di setiap repo. Dokumennya ada di [docs/arsip-gemastik/](docs/arsip-gemastik/).
 
-## Status Integrasi & Pengerjaan
+## Lisensi
 
-| Komponen / Antarmuka | Repositori | Status |
-| --- | --- | --- |
-| Perakitan hardware & kamera | Hardware-Connections | _On-going_ |
-| Model STC-rPPG | Software-Architecture | _Iterasi Lokal_ |
-| Model ST-GCN / Graph-Tran | Software-Architecture | _Arsitektur selesai, bobot dummy tersedia_ |
-| Fusi multimodal (VA-bridge) | Software-Architecture | _Implementasi selesai_ |
-| UI kiosk (PySide6 + QML) | Interface-Display | _Desain Figma in progress_ |
-| `stgcn_va.onnx` | Software-Architecture | _Belum (menunggu pelatihan)_ |
-| `mock_inference_publisher.py` | Software-Architecture | _Tersedia (UI bisa jalan)_ |
-
-## Cara Berkontribusi
-
-1. Baca `ipc_contract_v1.json` sebelum menulis kode integrasi.
-2. Jika mengerjakan UI, gunakan `mock_inference_publisher.py`. Jangan menunggu finalisasi model DL.
-3. Branch utama (`main`) selalu stabil, branch `dev` untuk iterasi mingguan, `feat/*` untuk fitur individual.
-4. Sertakan penanda bahwa repo Anda adalah bagian dari "MoodIn" di README masing-masing.
-
-## Tim
-
-| Nama | NRP | Peran |
-| --- | --- | --- |
-| Jeremia Christ Immanuel Manalu | 5023231017 | Ketua, Arsitektur Perangkat Lunak |
-| Tanuhita Setya Dhanurendra | 5023231026 | Anggota, Hardware & Sinyal |
-| Nozomi Crystalle Padilla Malle | 5023241046 | Anggota, Antarmuka |
-
-**Dosen Pembimbing:** Nada Fitrieyatul Hikmah, S.T., M.T.
-
-## Referensi & Lisensi
-Repo hub `MoodIn-master` dirilis di bawah **Apache License 2.0**.
-- [Proposal PDF](docs/proposal/Proposal_MoodIn_VisionaryX.pdf)
-- SDG 3, 4, 9 — lihat [docs/sdgs.md](docs/sdgs.md).
+Berkas [LICENSE](LICENSE) (Apache-2.0) ditetapkan pada era GEMASTIK. Lisensi untuk luaran TA sedang ditinjau bersama pembimbing, termasuk ketentuan HKI ITS.

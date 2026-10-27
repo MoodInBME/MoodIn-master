@@ -1,62 +1,54 @@
-# Roadmap — MoodIn
+# Roadmap Tugas Akhir — MoodIn
 
-Status per **22 Juli 2026**. Roadmap ini mengikat progres ke tahapan GEMASTIK XIX dan tabel Bab 3.3 proposal. Perbarui saat sinkronisasi mingguan.
+Status per 27 Oktober 2026. Kode milestone yang sama dipakai di semua repo. Rincian metode dan target ada di proposal TA (belum dipublikasikan).
 
 Legenda: [x] selesai · [~] berjalan · [ ] belum mulai
 
-## Status Ringkas
+## M0 — Arsip GEMASTIK dan tata kelola repo (berjalan)
 
-- **Board edge:** Jetson Orin Nano Super (8 GB, Ubuntu 24.04) = **fix** untuk Cross-Eval 2. Jetson Orin Nano Super = **rencana peningkatan** setelah pendampingan teknis tersedia.
-- **Kamera:** Arducam IMX477 (RGB), base M12, FoV kerja 55 deg = **fix**.
-- **Python:** 3.12 (seragam lintas repo) = **fix**.
-- **Dataset ekspresi:** Aff-Wild2 = target utama (menunggu persetujuan EULA); CK+/Oulu-CASIA = baseline sementara.
-- **Kontrak MQTT:** v1.0.0 terdefinisi di `docs/ipc-contract.md`.
+- [x] Tag `gemastik-xix-2026` di 5 repo era GEMASTIK
+- [x] Branch default diseragamkan menjadi `main`; ruleset branch dan tag aktif
+- [x] Repo Interface-App dibuat untuk antarmuka Flutter
+- [~] Dokumentasi semua repo diselaraskan dengan TA
+- [ ] Interface-Display diarsipkan (_read-only_)
+- [ ] Label, milestone, dan _issue_ awal di setiap repo
+- [ ] Kontrak pesan antar-repo versi TA, setelah bimbingan
 
-## Fase 1 — Fondasi & Proposal (selesai)
+## M1 — Jalur fisiologis pada dataset sekunder (berikutnya)
 
-- [x] Riset masalah, rumusan masalah, dan proposal GEMASTIK
-- [x] Inisialisasi organisasi `MoodInBME` + 4 repo
-- [x] Arsitektur sistem 6 tahap + diagram
-- [x] Penetapan stack: ST-GCN/Graph-Transformer + STC-rPPG + fusi VA-bridge
+- [ ] Pemuat data untuk dataset sekunder
+- [ ] Estimasi sinyal denyut dari video, beserta metode pembanding
+- [ ] Turunan denyut dan HRV dari sinyal hasil estimasi
+- [ ] Klasifikasi tingkat stres dan evaluasinya
 
-## Fase 2 — Menuju Cross-Eval 2 (berjalan)
+## M2 — Perangkat keras dan pengujian di Jetson
 
-### Hardware
-- [x] Finalisasi kamera Arducam IMX477 + perhitungan FoV (55 deg)
-- [x] Penetapan Jetson Orin Nano Super sebagai board edge utama CE2
-- [~] Perakitan enclosure + two-way mirror + integrasi Waveshare 10.1"
-- [~] Uji akuisisi & kualitas sinyal di balik cermin
+- [ ] Keputusan bimbingan: kamera, layar pengganti, susunan cermin, dan pencahayaan
+- [ ] Integrasi kamera dan uji latensi per tahap di Jetson
+- [ ] Skrip integrasi dan _deployment_ ditata di Hardware-Connections
 
-### Software
-- [x] Pipeline preprocessing (CLAHE) + ekstraksi 468->68 landmark
-- [x] Komponen model: FaceGraph, ST-GCN block, Temporal Transformer, kepala VA
-- [~] Training model ekspresi (baseline CK+/Oulu; alih ke Aff-Wild2 setelah EULA)
-- [~] STC-rPPG (estimasi HR/HRV)
-- [~] Fusi multimodal VA-bridge + klasifikasi 5 kelas
-- [ ] Deployment edge Jetson Orin Nano Super (ONNX Runtime) end-to-end
+## M3 — Antarmuka Flutter
 
-### Interface
-- [~] UI kiosk PySide6 + QML (alur idle -> capture -> result -> intervention)
-- [ ] Overlay landmark real-time pada layar akuisisi
-- [ ] Visualisasi tren mood 7 hari
+- [ ] Uji kelayakan Flutter di Jetson: _build_, layar penuh, orientasi layar, beban CPU dan RAM
+- [ ] Kerangka aplikasi cermin dan aplikasi pendamping Android
+- [ ] Klien kontrak pesan versi TA
 
-### Integrasi
-- [x] Kontrak MQTT kanonik v1.0.0
-- [ ] Integrasi end-to-end lintas repo via MQTT (dev broker :1883)
-- [ ] Web demo (webcam laptop) untuk peragaan juri/dosen
+## M4 — Jalur wajah (setelah keputusan bimbingan)
 
-## Fase 3 — Peningkatan & Final (rencana)
+- [ ] Pemilihan pustaka _landmark_ wajah
+- [ ] Model jalur wajah dan evaluasinya
 
-- [ ] Migrasi board ke Jetson Orin Nano Super (JetPack 7.2, NVMe) + TensorRT/INT8
-- [ ] Kalibrasi bobot fusi (w1, w2) pada dataset fisiologis (MAHNOB-HCI/UBFC-Phys)
-- [ ] Evaluasi menyeluruh + validasi lapangan
-- [ ] Materi final: demo produk, narasi komersialisasi (model B2B), disclaimer non-medis
+## M5 — Integrasi dan uji sistem
 
-## Risiko yang Dipantau
+- [ ] Sistem utuh berjalan di Jetson
+- [ ] Pengujian sistem sesuai proposal TA
 
-| Risiko | Mitigasi |
-| --- | --- |
-| EULA Aff-Wild2 lama disetujui | jalan paralel dengan baseline CK+/Oulu |
-| Beban komputasi real-time di Jetson Orin Nano Super (>= 30 fps) | optimasi ONNX; Jetson sebagai peningkatan |
-| HRV pada 30 fps kurang presisi | fokus RMSSD, sesi >= 30 dtk, komunikasikan keterbatasan |
-| Overreach klaim klinis | disclaimer "bukan alat medis" di UI & materi |
+## Risiko yang dipantau
+
+| Risiko                                            | Mitigasi                                                                                    |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Keputusan bimbingan mengubah rancangan            | Pekerjaan yang bergantung pada keputusan itu ditunda; keputusan dicatat di [adr.md](adr.md) |
+| Kinerja waktu nyata di Jetson tidak tercapai      | Uji latensi per tahap sejak M2, sebelum integrasi                                           |
+| Flutter belum teruji di Jetson dengan JetPack 7.2 | Uji kelayakan lebih dulu di M3, sebelum semua layar dipindahkan                             |
+| Akses dataset tertunda                            | Mulai dari dataset yang sudah tersedia                                                      |
+| Klaim berlebihan                                  | MoodIn ditegaskan sebagai prototipe riset, bukan alat diagnosis medis                       |

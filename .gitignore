@@ -1,0 +1,22 @@
+# Data pribadi dan kredensial (jangan pernah di-commit)
+.env
+*.env
+*.pem
+*.key
+kaggle.json
+*ktm*
+*KTM*
+*ktp*
+*KTP*
+*EULA*.pdf
+WhatsApp*
+*.htm
+_pribadi*/
+
+# Berkas sistem dan editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+~$*

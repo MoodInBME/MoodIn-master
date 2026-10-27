@@ -1,37 +1,30 @@
-# Tim VisionaryX
+# Tim
 
-Proyek **MoodIn** — GEMASTIK XIX, Divisi 9 (Piranti Cerdas, Sistem Benam, dan IoT). Institut Teknologi Sepuluh Nopember (ITS), Departemen Teknik Biomedik.
+## Fase Tugas Akhir
 
-## Anggota
+| Peran              | Nama                                |
+| ------------------ | ----------------------------------- |
+| Penulis TA         | Jeremia Christ Immanuel Manalu      |
+| Dosen pembimbing 1 | Nada Fitrieyatul Hikmah, S.T., M.T. |
+| Dosen pembimbing 2 | Nabila Puspita Firdi, S.T., M.Si.   |
 
-| Nama | NRP | Peran | Fokus |
-| --- | --- | --- | --- |
-| Jeremia Christ Immanuel Manalu | 5023231017 | Ketua | Arsitektur sistem, koordinasi, software/integrasi |
-| Tanuhita Setya Dhanurendra | 5023231026 | Anggota | Model & pemrosesan sinyal |
-| Nozomi Crystalle Padilla Malle | 5023241046 | Anggota | Hardware & antarmuka |
+Departemen Teknik Biomedik, Institut Teknologi Sepuluh Nopember (ITS).
 
-> Pembagian fokus bersifat kolaboratif; lihat penanggung jawab per-repo di masing-masing README.
+Hanya penulis yang membuat commit dan push pada fase TA. Anggota tim GEMASTIK dan dosen pembimbing punya akses baca ke organisasi [MoodInBME](https://github.com/MoodInBME).
 
-## Dosen Pembimbing
+## Riwayat: tim VisionaryX, GEMASTIK XIX 2026
 
-- **Nada Fitrieyatul Hikmah, S.T., M.T.** — Departemen Teknik Biomedik, ITS.
+| Nama                           | Keterangan                                           |
+| ------------------------------ | ---------------------------------------------------- |
+| Jeremia Christ Immanuel Manalu | Ketua                                                |
+| Tanuhita Setya Dhanurendra     | Anggota                                              |
+| Sitti Nurhalimah               | Anggota, menggantikan Nozomi Crystalle Padilla Malle |
+| Nozomi Crystalle Padilla Malle | Anggota sebelum digantikan oleh Sitti Nurhalimah     |
+
+Dosen pembimbing GEMASTIK: Nada Fitrieyatul Hikmah, S.T., M.T.
+
+Kontribusi kode tiap anggota tercatat di riwayat git dan dirangkum di bagian "Asal kode" pada [README Software-Architecture](https://github.com/MoodInBME/Software-Architecture#5-asal-kode).
 
 ## Kontak
 
-- Ketua: 5023231017@student.its.ac.id
-- Organisasi GitHub: [MoodInBME](https://github.com/MoodInBME)
-
-## Tanggung Jawab per Repo
-
-| Repo | Penanggung jawab utama |
-| --- | --- |
-| `MoodIn-master` (hub) | Ketua |
-| `Hardware-Connections` | Hardware & antarmuka |
-| `Software-Architecture` | Model & pemrosesan sinyal |
-| `Interface-Display` | Hardware & antarmuka + software |
-
-## Cara Kerja
-
-- Sinkronisasi progres mingguan (perbarui tabel status di README hub & `docs/roadmap.md`).
-- Semua kerja masuk lewat Pull Request ke `dev` (lihat `CONTRIBUTING.md`).
-- Kontrak antar-modul mengacu ke `docs/ipc-contract.md`.
+Gunakan _issue_ pada repo yang bersangkutan. Laporan keamanan atau data pribadi mengikuti [SECURITY.md](https://github.com/MoodInBME/.github/blob/main/SECURITY.md).
