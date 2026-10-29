@@ -16,6 +16,9 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/). Repo 
 - `README.md` ditata ulang (Fase B2): banner terang/gelap, ikon, gambaran sistem dengan diagram Mermaid, peta repositori, dan prinsip lintas repo dalam bentuk kartu. Istilah diselaraskan dengan tahap Proposal Tugas Akhir (Pra-TA).
 - `docs/team.md`: peran dosen menjadi **Calon Dosen Pembimbing 1** dan **2**, gelar Nabila Puspita Firdi dikoreksi menjadi M.Sc., dan nama fakultas (FTEIC) dicantumkan.
 - `docs/roadmap.md`, `docs/adr.md`, `docs/ipc-contract.md`, dan `docs/arsip-gemastik/README.md`: istilah "fase TA" diganti "tahap Pra-TA", "kontrak versi TA" diganti "kontrak pesan v2", dan status M0 diperbarui.
+- `README.md` (Fase C1): prinsip lintas repo dinyatakan berlaku untuk cara kerja cermin dan isi repositori, sedangkan pengambilan data penelitian dirujuk ke halaman etika. Bagian Milestone menyebut syarat persetujuan etik, dan bagian Lisensi menegaskan bahwa lisensi tidak mencakup data partisipan.
+- `docs/roadmap.md` (Fase C1): status per 29 Oktober 2026, jalur persetujuan etik, dan risiko keterlambatan persetujuan etik.
+- `.gitignore` (Fase C1): pola folder data partisipan dan rekaman uji (ADR-14).
 
 ### Ditambahkan
 
@@ -23,6 +26,9 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/). Repo 
 - `docs/arsip-gemastik/README.md` sebagai indeks arsip.
 - `.gitignore` untuk data pribadi dan kredensial.
 - `.github/readme/`: gambar README (banner, ikon, wajah suasana hati) beserta `KREDIT.md`.
+- `docs/etika-dan-data.md` (Fase C1): etika penelitian, status persetujuan etik, dan aturan data partisipan untuk semua repo.
+- `docs/adr.md` (Fase C1): ADR-14, data partisipan tidak disimpan di repositori.
+- `.github/readme/ikon/etik.png` (Fase C1) untuk tabel dokumen di README.
 
 ### Dipindah
 
@@ -42,6 +48,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/). Repo 
   - repo baru Interface-App dibuat untuk antarmuka Flutter, dan Interface-Display ditetapkan menjadi arsip.
 - **Fase B, dokumentasi:** README dan dokumen semua repo diselaraskan dengan TA. Rinciannya ada di `CHANGELOG.md` setiap repo.
 - **28 Okt 2026, tampilan dan istilah (Fase B2):** README semua repo ditata ulang dengan banner terang/gelap, ikon, dan narasi yang lebih deskriptif; istilah diselaraskan menjadi Proposal Tugas Akhir (Pra-TA) dan Calon Dosen Pembimbing; fakultas dicantumkan sebagai FTEIC. Gambar README disimpan di `.github/readme/` setiap repo (di repo .github: `profile/assets/`). Interface-Display dibuka sementara dari arsip untuk pembaruan README, lalu diarsipkan lagi.
+- **29 Okt 2026, kesiapan etik (Fase C1):** aturan data partisipan dicatat sebagai ADR-14 dan dijelaskan di `docs/etika-dan-data.md`. Pola folder data partisipan dan rekaman uji ditambahkan ke `.gitignore` lima repo aktif. Di repo .github, profil organisasi, `CONTRIBUTING.md`, `SECURITY.md`, dan templat _issue_ serta _pull request_ menyebut data partisipan, dan templat _issue_ memakai label berawalan `jenis:`. README Software-Architecture dan Hardware-Connections ikut disesuaikan.
 
 ## [gemastik-xix-2026] — 2026-10-27
 

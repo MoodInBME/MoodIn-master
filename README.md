@@ -21,7 +21,7 @@ MoodIn saat ini dikembangkan sebagai **Proposal Tugas Akhir (Pra-TA)** di Depart
 
 ## Gambaran sistem
 
-Pengguna duduk di depan cermin dua arah selama pemeriksaan singkat. Kamera di balik cermin merekam wajah, lalu komputer _edge_ di dalam cermin, NVIDIA Jetson Orin Nano Super, mengolah video itu menjadi dua keluaran yang berjalan berdampingan:
+Pengguna duduk di depan cermin dua arah selama pemeriksaan singkat. Kamera di balik cermin menangkap video wajah, lalu komputer _edge_ di dalam cermin, NVIDIA Jetson Orin Nano Super, mengolah video itu menjadi dua keluaran yang berjalan berdampingan:
 
 <table>
   <tr>
@@ -106,7 +106,7 @@ Antar-repositori tidak saling `import`. Modul berkomunikasi lewat MQTT di jaring
     <td width="33%" valign="top">
       <img src=".github/readme/ikon/prinsip-lokal.png" width="36" alt=""><br>
       <b>Diproses di perangkat</b><br>
-      Pemrosesan berjalan di NVIDIA Jetson Orin Nano Super di dalam cermin.
+      Video wajah diolah di NVIDIA Jetson Orin Nano Super di dalam cermin.
     </td>
     <td width="33%" valign="top">
       <img src=".github/readme/ikon/prinsip-tanpa-citra.png" width="36" alt=""><br>
@@ -128,7 +128,7 @@ Antar-repositori tidak saling `import`. Modul berkomunikasi lewat MQTT di jaring
     <td width="33%" valign="top">
       <img src=".github/readme/ikon/prinsip-tanpa-dataset.png" width="36" alt=""><br>
       <b>Tanpa dataset di repo</b><br>
-      Berkas dataset, turunannya, dan data pribadi tidak di-commit.
+      Berkas dataset, data partisipan, turunannya, dan data pribadi tidak di-commit.
     </td>
     <td width="33%" valign="top">
       <img src=".github/readme/ikon/prinsip-persetujuan.png" width="36" alt=""><br>
@@ -137,6 +137,8 @@ Antar-repositori tidak saling `import`. Modul berkomunikasi lewat MQTT di jaring
     </td>
   </tr>
 </table>
+
+Prinsip di atas berlaku untuk cara kerja cermin dan isi repositori. Pengambilan data penelitian dengan partisipan diatur oleh protokol yang disetujui Komite Etik Penelitian (KEP) ITS; lihat [docs/etika-dan-data.md](docs/etika-dan-data.md).
 
 ## Milestone
 
@@ -151,7 +153,7 @@ Kode milestone yang sama dipakai di semua repositori. Milestone mencakup tahap P
 | M4   | Jalur wajah                                             | ![Menunggu bimbingan](https://img.shields.io/badge/-menunggu%20bimbingan-F29A0B?style=flat-square) |
 | M5   | Integrasi dan uji sistem                                | ![Belum mulai](https://img.shields.io/badge/-belum%20mulai-6B7A8C?style=flat-square)               |
 
-Rincian setiap milestone dan risiko yang dipantau ada di [docs/roadmap.md](docs/roadmap.md).
+Pengambilan data primer, bagian dari M5, baru dimulai setelah persetujuan etik dari KEP ITS terbit. Rincian setiap milestone dan risiko yang dipantau ada di [docs/roadmap.md](docs/roadmap.md).
 
 ## Dokumen
 
@@ -163,6 +165,10 @@ Rincian setiap milestone dan risiko yang dipantau ada di [docs/roadmap.md](docs/
   <tr>
     <td align="center"><img src=".github/readme/ikon/milestone.png" width="36" alt=""></td>
     <td><a href="docs/roadmap.md"><b>docs/roadmap.md</b></a><br>Milestone M0–M5 dan risiko yang dipantau.</td>
+  </tr>
+  <tr>
+    <td align="center"><img src=".github/readme/ikon/etik.png" width="36" alt=""></td>
+    <td><a href="docs/etika-dan-data.md"><b>docs/etika-dan-data.md</b></a><br>Etika penelitian, status persetujuan etik, dan aturan data partisipan.</td>
   </tr>
   <tr>
     <td align="center"><img src=".github/readme/ikon/tim.png" width="36" alt=""></td>
@@ -192,7 +198,7 @@ MoodIn berawal dari proyek tim VisionaryX pada GEMASTIK XIX 2026, Divisi 9 (Pira
 
 ## Lisensi
 
-Berkas [LICENSE](LICENSE) (Apache-2.0) ditetapkan pada era GEMASTIK dan tetap berlaku untuk repositori ini. Lisensi untuk hasil pengembangan berikutnya sedang ditinjau bersama calon dosen pembimbing, termasuk ketentuan HKI ITS.
+Berkas [LICENSE](LICENSE) (Apache-2.0) ditetapkan pada era GEMASTIK dan tetap berlaku untuk repositori ini. Lisensi untuk hasil pengembangan berikutnya sedang ditinjau bersama calon dosen pembimbing, termasuk ketentuan HKI ITS. Lisensi hanya berlaku untuk kode dan dokumen di repositori. Data partisipan penelitian tidak termasuk; pemakaiannya hanya mengikuti persetujuan partisipan dan protokol yang disetujui KEP ITS. Dataset publik yang dipakai tetap tunduk pada lisensi atau EULA masing-masing.
 
 ---
 

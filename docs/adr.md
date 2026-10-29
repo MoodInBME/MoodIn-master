@@ -21,6 +21,7 @@ ADR-01 s.d. ADR-07 dibuat pada era GEMASTIK dan sebelumnya ada di README repo in
 | ADR-11 | Antarmuka baru dengan Flutter di repo baru Interface-App                       | Diterima           |
 | ADR-12 | MoodIn-master hanya dokumen; integrasi Jetson di Hardware-Connections          | Diterima           |
 | ADR-13 | Hanya mahasiswa pengusul yang membuat commit; riwayat GEMASTIK tetap utuh      | Diterima           |
+| ADR-14 | Data partisipan tidak disimpan di repo; dikelola sesuai protokol KEP ITS       | Diterima           |
 
 ## Rincian
 
@@ -96,3 +97,10 @@ ADR-01 s.d. ADR-07 dibuat pada era GEMASTIK dan sebelumnya ada di README repo in
 - **Tanggal:** 27 Oktober 2026.
 - **Keputusan:** sejak tag `gemastik-xix-2026`, hanya mahasiswa pengusul (Jeremia) yang membuat commit dan push. Commit era GEMASTIK beserta penulisnya tetap di riwayat dan tidak ditulis ulang.
 - **Alasan:** karya Pra-TA dan Tugas Akhir dapat dipertanggungjawabkan penulisnya tanpa menghapus atribusi karya anggota tim sebelumnya.
+
+### ADR-14 — Data partisipan di luar repositori
+
+- **Tanggal:** 29 Oktober 2026.
+- **Konteks:** penelitian ini akan mengambil data primer dari partisipan setelah persetujuan etik dari Komite Etik Penelitian (KEP) ITS terbit. Semua repo MoodInBME publik, dan berkas yang pernah di-commit tetap tersimpan di riwayat git.
+- **Keputusan:** data partisipan dalam bentuk apa pun tidak disimpan di repositori mana pun. Data dikelola di luar GitHub sesuai protokol yang disetujui KEP ITS. Repo hanya memuat kode, dokumen, dan hasil agregat tanpa identitas.
+- **Konsekuensi:** pola data partisipan dan rekaman uji ditambahkan ke `.gitignore` setiap repo aktif; _pre-push hook_ di mesin penulis menolak folder data partisipan, berkas media dan sinyal, bobot model, dan berkas besar; aturannya dijelaskan di [etika-dan-data.md](etika-dan-data.md).
