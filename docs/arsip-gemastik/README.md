@@ -1,6 +1,6 @@
 # Arsip GEMASTIK XIX 2026
 
-Isi folder ini berasal dari era GEMASTIK XIX 2026 (tim VisionaryX) dan **bukan acuan fase Tugas Akhir**. Folder ini disimpan sebagai rujukan sejarah. Isi repo pada akhir era itu juga bisa dilihat pada tag [`gemastik-xix-2026`](https://github.com/MoodInBME/MoodIn-master/tree/gemastik-xix-2026).
+Isi folder ini berasal dari era GEMASTIK XIX 2026 (tim VisionaryX) dan **bukan acuan tahap Proposal Tugas Akhir (Pra-TA)**. Folder ini disimpan sebagai rujukan sejarah. Isi repo pada akhir era itu juga bisa dilihat pada tag [`gemastik-xix-2026`](https://github.com/MoodInBME/MoodIn-master/tree/gemastik-xix-2026).
 
 | Isi                           | Keterangan                                                                                 |
 | ----------------------------- | ------------------------------------------------------------------------------------------ |

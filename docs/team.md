@@ -1,16 +1,18 @@
 # Tim
 
-## Fase Tugas Akhir
+## Tahap Proposal Tugas Akhir (Pra-TA)
 
-| Peran              | Nama                                |
-| ------------------ | ----------------------------------- |
-| Penulis TA         | Jeremia Christ Immanuel Manalu      |
-| Dosen pembimbing 1 | Nada Fitrieyatul Hikmah, S.T., M.T. |
-| Dosen pembimbing 2 | Nabila Puspita Firdi, S.T., M.Si.   |
+| Peran                    | Nama                                |
+| ------------------------ | ----------------------------------- |
+| Mahasiswa pengusul       | Jeremia Christ Immanuel Manalu      |
+| Calon Dosen Pembimbing 1 | Nada Fitrieyatul Hikmah, S.T., M.T. |
+| Calon Dosen Pembimbing 2 | Nabila Puspita Firdi, S.T., M.Sc.   |
 
-Departemen Teknik Biomedik, Institut Teknologi Sepuluh Nopember (ITS).
+Departemen Teknik Biomedik, Fakultas Teknologi Elektro dan Informatika Cerdas (FTEIC), Institut Teknologi Sepuluh Nopember (ITS).
 
-Hanya penulis yang membuat commit dan push pada fase TA. Anggota tim GEMASTIK dan dosen pembimbing punya akses baca ke organisasi [MoodInBME](https://github.com/MoodInBME).
+Dosen pembimbing Tugas Akhir belum ditetapkan secara resmi. Selama tahap Pra-TA, kedua dosen di atas berstatus calon dosen pembimbing.
+
+Sejak tag `gemastik-xix-2026`, hanya mahasiswa pengusul yang membuat commit dan push. Anggota tim GEMASTIK dan calon dosen pembimbing punya akses baca ke organisasi [MoodInBME](https://github.com/MoodInBME).
 
 ## Riwayat: tim VisionaryX, GEMASTIK XIX 2026
 

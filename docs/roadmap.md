@@ -1,6 +1,6 @@
-# Roadmap Tugas Akhir — MoodIn
+# Roadmap MoodIn: dari Pra-TA ke Tugas Akhir
 
-Status per 27 Oktober 2026. Kode milestone yang sama dipakai di semua repo. Rincian metode dan target ada di proposal TA (belum dipublikasikan).
+Status per 28 Oktober 2026. Kode milestone yang sama dipakai di semua repo. Milestone dimulai pada tahap Proposal Tugas Akhir (Pra-TA) dan berlanjut ke pelaksanaan Tugas Akhir. Rincian metode dan target ada di dokumen proposal (belum dipublikasikan).
 
 Legenda: [x] selesai · [~] berjalan · [ ] belum mulai
 
@@ -9,10 +9,11 @@ Legenda: [x] selesai · [~] berjalan · [ ] belum mulai
 - [x] Tag `gemastik-xix-2026` di 5 repo era GEMASTIK
 - [x] Branch default diseragamkan menjadi `main`; ruleset branch dan tag aktif
 - [x] Repo Interface-App dibuat untuk antarmuka Flutter
-- [~] Dokumentasi semua repo diselaraskan dengan TA
-- [ ] Interface-Display diarsipkan (_read-only_)
+- [x] Dokumentasi semua repo diselaraskan dengan rancangan proposal (Fase B)
+- [x] Interface-Display diarsipkan (_read-only_)
+- [~] Tampilan README dan istilah Pra-TA diseragamkan (Fase B2)
 - [ ] Label, milestone, dan _issue_ awal di setiap repo
-- [ ] Kontrak pesan antar-repo versi TA, setelah bimbingan
+- [ ] Kontrak pesan antar-repo v2, setelah bimbingan
 
 ## M1 — Jalur fisiologis pada dataset sekunder (berikutnya)
 
@@ -31,7 +32,7 @@ Legenda: [x] selesai · [~] berjalan · [ ] belum mulai
 
 - [ ] Uji kelayakan Flutter di Jetson: _build_, layar penuh, orientasi layar, beban CPU dan RAM
 - [ ] Kerangka aplikasi cermin dan aplikasi pendamping Android
-- [ ] Klien kontrak pesan versi TA
+- [ ] Klien kontrak pesan v2
 
 ## M4 — Jalur wajah (setelah keputusan bimbingan)
 
@@ -41,7 +42,7 @@ Legenda: [x] selesai · [~] berjalan · [ ] belum mulai
 ## M5 — Integrasi dan uji sistem
 
 - [ ] Sistem utuh berjalan di Jetson
-- [ ] Pengujian sistem sesuai proposal TA
+- [ ] Pengujian sistem sesuai Proposal Tugas Akhir
 
 ## Risiko yang dipantau
 

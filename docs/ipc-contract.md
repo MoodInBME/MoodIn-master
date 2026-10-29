@@ -1,6 +1,6 @@
 # IPC Contract — Skema MQTT Lintas-Repo (KANONIK)
 
-> **Status pada fase Tugas Akhir (27 Okt 2026):** berkas ini adalah kontrak **v1.0.0 era GEMASTIK** dan belum mengikuti rancangan TA. Yang sudah diputuskan untuk TA: broker MQTT di jaringan lokal **tanpa TLS** (port 8883 tidak dipakai), setiap klien memakai _username/password_, dan isi pesan dienkripsi (ADR-10 di [adr.md](adr.md)). Keluaran TA juga mencakup tingkat stres. Kontrak versi TA akan menggantikan berkas ini setelah bimbingan; sampai saat itu, jangan membuat implementasi baru berdasarkan berkas ini.
+> **Status pada tahap Pra-TA (28 Okt 2026):** berkas ini adalah kontrak **v1.0.0 era GEMASTIK** dan belum mengikuti rancangan proposal. Yang sudah diputuskan: broker MQTT di jaringan lokal **tanpa TLS** (port 8883 tidak dipakai), setiap klien memakai _username/password_, dan isi pesan dienkripsi (ADR-10 di [adr.md](adr.md)). Keluaran sistem juga mencakup tingkat stres. Kontrak pesan v2 akan menggantikan berkas ini setelah bimbingan; sampai saat itu, jangan membuat implementasi baru berdasarkan berkas ini.
 >
 > Kekeliruan yang diketahui: arah `moodin/ui/command` di tabel bagian 2 terbalik. Yang benar, antarmuka (UI) menerbitkan perintah dan mesin inferensi berlangganan.
 

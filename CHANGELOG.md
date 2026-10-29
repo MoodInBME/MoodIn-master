@@ -4,7 +4,7 @@ Perubahan penting pada repo ini dicatat di sini. Perubahan yang berdampak ke rep
 
 Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/). Repo ini berisi dokumen, jadi penanda versinya berupa tag git, bukan nomor rilis perangkat lunak.
 
-## [Unreleased] — fase Tugas Akhir
+## [Unreleased] — tahap Pra-TA
 
 ### Diubah
 
@@ -13,12 +13,16 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/). Repo 
 - `docs/team.md` memuat penulis TA, kedua pembimbing, dan riwayat tim GEMASTIK, tanpa NRP dan email.
 - `docs/ipc-contract.md` diberi catatan status: kontrak v1.0.0 adalah versi era GEMASTIK; kontrak versi TA menyusul setelah bimbingan.
 - `.github/workflows/link-check.yml` kini terpicu oleh push dan _pull request_ ke `main`, dan hanya memeriksa dokumen aktif.
+- `README.md` ditata ulang (Fase B2): banner terang/gelap, ikon, gambaran sistem dengan diagram Mermaid, peta repositori, dan prinsip lintas repo dalam bentuk kartu. Istilah diselaraskan dengan tahap Proposal Tugas Akhir (Pra-TA).
+- `docs/team.md`: peran dosen menjadi **Calon Dosen Pembimbing 1** dan **2**, gelar Nabila Puspita Firdi dikoreksi menjadi M.Sc., dan nama fakultas (FTEIC) dicantumkan.
+- `docs/roadmap.md`, `docs/adr.md`, `docs/ipc-contract.md`, dan `docs/arsip-gemastik/README.md`: istilah "fase TA" diganti "tahap Pra-TA", "kontrak versi TA" diganti "kontrak pesan v2", dan status M0 diperbarui.
 
 ### Ditambahkan
 
 - `docs/adr.md`: ADR-01 s.d. ADR-07 dipindah dari README beserta statusnya pada fase TA, ditambah ADR-08 s.d. ADR-13.
 - `docs/arsip-gemastik/README.md` sebagai indeks arsip.
 - `.gitignore` untuk data pribadi dan kredensial.
+- `.github/readme/`: gambar README (banner, ikon, wajah suasana hati) beserta `KREDIT.md`.
 
 ### Dipindah
 
@@ -37,6 +41,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/). Repo 
   - tag `gemastik-xix-2026` dibuat di 5 repo era GEMASTIK;
   - repo baru Interface-App dibuat untuk antarmuka Flutter, dan Interface-Display ditetapkan menjadi arsip.
 - **Fase B, dokumentasi:** README dan dokumen semua repo diselaraskan dengan TA. Rinciannya ada di `CHANGELOG.md` setiap repo.
+- **28 Okt 2026, tampilan dan istilah (Fase B2):** README semua repo ditata ulang dengan banner terang/gelap, ikon, dan narasi yang lebih deskriptif; istilah diselaraskan menjadi Proposal Tugas Akhir (Pra-TA) dan Calon Dosen Pembimbing; fakultas dicantumkan sebagai FTEIC. Gambar README disimpan di `.github/readme/` setiap repo (di repo .github: `profile/assets/`). Interface-Display dibuka sementara dari arsip untuk pembaruan README, lalu diarsipkan lagi.
 
 ## [gemastik-xix-2026] — 2026-10-27
 
