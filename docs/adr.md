@@ -1,6 +1,6 @@
 # Catatan Keputusan Arsitektur (ADR)
 
-Status: **Diterima** = berlaku · **Diubah** = berlaku dengan perubahan · **Ditinjau** = menunggu keputusan bimbingan.
+Status: **Diterima** = berlaku · **Diubah** = berlaku dengan perubahan · **Ditinjau** = menunggu keputusan bimbingan · **Diusulkan** = draf usulan, belum diputuskan.
 
 ADR-01 s.d. ADR-07 dibuat pada era GEMASTIK dan sebelumnya ada di README repo ini. ADR-08 dan seterusnya dibuat pada tahap Proposal Tugas Akhir (Pra-TA). Keputusan metode yang belum boleh dipublikasikan tidak dicatat di sini.
 
@@ -22,6 +22,7 @@ ADR-01 s.d. ADR-07 dibuat pada era GEMASTIK dan sebelumnya ada di README repo in
 | ADR-12 | MoodIn-master hanya dokumen; integrasi Jetson di Hardware-Connections          | Diterima           |
 | ADR-13 | Hanya mahasiswa pengusul yang membuat commit; riwayat GEMASTIK tetap utuh      | Diterima           |
 | ADR-14 | Data partisipan tidak disimpan di repo; dikelola sesuai protokol KEP ITS       | Diterima           |
+| ADR-15 | Kamera UVC (Logitech C920) sebagai kamera utama                                | Diusulkan          |
 
 ## Rincian
 
@@ -104,3 +105,14 @@ ADR-01 s.d. ADR-07 dibuat pada era GEMASTIK dan sebelumnya ada di README repo in
 - **Konteks:** penelitian ini akan mengambil data primer dari partisipan setelah persetujuan etik dari Komite Etik Penelitian (KEP) ITS terbit. Semua repo MoodInBME publik, dan berkas yang pernah di-commit tetap tersimpan di riwayat git.
 - **Keputusan:** data partisipan dalam bentuk apa pun tidak disimpan di repositori mana pun. Data dikelola di luar GitHub sesuai protokol yang disetujui KEP ITS. Repo hanya memuat kode, dokumen, dan hasil agregat tanpa identitas.
 - **Konsekuensi:** pola data partisipan dan rekaman uji ditambahkan ke `.gitignore` setiap repo aktif; _pre-push hook_ di mesin penulis menolak folder data partisipan, berkas media dan sinyal, bobot model, dan berkas besar; aturannya dijelaskan di [etika-dan-data.md](etika-dan-data.md).
+
+### ADR-15 — Kamera UVC sebagai kamera utama (usulan)
+
+- **Tanggal:** 20 November 2026. **Status:** diusulkan, menunggu keputusan bimbingan.
+- **Asal:** usulan Calon Dosen Pembimbing 1 untuk mengganti Raspberry Pi HQ Camera (IMX477) dengan Logitech C920.
+- **Alasan:**
+  - C920 adalah kamera yang dipakai untuk merekam dataset publik UBFC-rPPG, sehingga setelan akuisisi di cermin dapat disamakan dengan data latih.
+  - Pada 640 × 480 piksel, C920 dapat mengirim video tanpa kompresi (YUYV) lewat USB.
+  - Dukungan driver IMX477 bergantung pada versi JetPack yang terpasang dan sudah beberapa kali menjadi kendala; kamera UVC memakai driver standar Linux.
+- **Syarat:** eksposur, _white balance_, dan fokus dikunci manual, dan frekuensi jala-jala diatur 50 Hz sebelum akuisisi.
+- **Konsekuensi bila diterima:** pilihan backend kamera di perangkat lunak berpindah dari CSI ke UVC, dan perbandingan kedua kamera dicatat dengan alat uji banding yang hanya menyimpan angka. Tabel spesifikasi perangkat keras baru diubah setelah keputusan.

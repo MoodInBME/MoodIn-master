@@ -28,6 +28,7 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/). Repo 
 - `.github/readme/`: gambar README (banner, ikon, wajah suasana hati) beserta `KREDIT.md`.
 - `docs/etika-dan-data.md` (Fase C1): etika penelitian, status persetujuan etik, dan aturan data partisipan untuk semua repo.
 - `docs/adr.md` (Fase C1): ADR-14, data partisipan tidak disimpan di repositori.
+- `docs/adr.md`: ADR-15 (diusulkan), kamera UVC Logitech C920 sebagai kamera utama, beserta status **Diusulkan** pada keterangan status.
 - `.github/readme/ikon/etik.png` (Fase C1) untuk tabel dokumen di README.
 
 ### Dipindah
