@@ -23,6 +23,7 @@ ADR-01 s.d. ADR-07 dibuat pada era GEMASTIK dan sebelumnya ada di README repo in
 | ADR-13 | Hanya mahasiswa pengusul yang membuat commit; riwayat GEMASTIK tetap utuh      | Diterima           |
 | ADR-14 | Data partisipan tidak disimpan di repo; dikelola sesuai protokol KEP ITS       | Diterima           |
 | ADR-15 | Kamera UVC (Logitech C920) sebagai kamera utama                                | Diusulkan          |
+| ADR-16 | Interaksi gestur tangan                                                        | Diusulkan          |
 
 ## Rincian
 
@@ -78,7 +79,7 @@ ADR-01 s.d. ADR-07 dibuat pada era GEMASTIK dan sebelumnya ada di README repo in
 
 - **Asal:** keputusan bimbingan bersama calon dosen pembimbing.
 - **Keputusan:** broker berada di jaringan lokal. Setiap klien wajib memakai _username/password_, isi pesan dienkripsi, dan koneksi tidak memakai TLS.
-- **Konsekuensi:** `Hardware-Connections/network/mqtt-tls-config.md` menjadi arsip, dan kontrak pesan v2 akan ditulis.
+- **Konsekuensi:** `Hardware-Connections/network/mqtt-tls-config.md` menjadi arsip, dan kontrak pesan ditulis ulang sebagai versi 2.0.0 di `ipc-contract.md` (22 Nov 2026) tanpa port 8883 dan TLS.
 
 ### ADR-11 — Flutter di Interface-App
 
@@ -116,3 +117,12 @@ ADR-01 s.d. ADR-07 dibuat pada era GEMASTIK dan sebelumnya ada di README repo in
   - Dukungan driver IMX477 bergantung pada versi JetPack yang terpasang dan sudah beberapa kali menjadi kendala; kamera UVC memakai driver standar Linux.
 - **Syarat:** eksposur, _white balance_, dan fokus dikunci manual, dan frekuensi jala-jala diatur 50 Hz sebelum akuisisi.
 - **Konsekuensi bila diterima:** pilihan backend kamera di perangkat lunak berpindah dari CSI ke UVC, dan perbandingan kedua kamera dicatat dengan alat uji banding yang hanya menyimpan angka. Tabel spesifikasi perangkat keras baru diubah setelah keputusan.
+
+### ADR-16 — Interaksi gestur tangan (usulan)
+
+- **Tanggal:** 22 November 2026. **Status:** diusulkan, menunggu keputusan bimbingan.
+- **Konteks:** layar di balik cermin dua arah tidak dapat disentuh, sehingga pengguna butuh cara memilih menu dan mengisi SAM sembilan posisi tanpa sentuhan.
+- **Usulan:** gestur satu tangan dari kamera yang sama. Kursor mengikuti pangkal telunjuk; cubit ibu jari ke telunjuk untuk memilih; telapak terbuka ditahan 1 detik untuk kembali. Gestur nonaktif selama fase pengukuran agar tangan tidak menutupi wajah dan tidak menambah beban komputasi saat sinyal diukur.
+- **Privasi:** citra dan titik sendi tangan hanya diproses di memori; yang dikirim lewat MQTT hanya jenis peristiwa dan posisi kursor (`moodin/gesture/event`, kontrak IPC 2.0.0).
+- **Implementasi:** modul `interaction/` di Software-Architecture (MediaPipe Hands 0.10.14) dan lapisan kursor di Interface-App. Implementasi ditulis sendiri; dua repositori Apache-2.0 disebut sebagai inspirasi di README modul.
+- **Belum diketahui:** beban CPU di Jetson saat gestur dan pelacak wajah berjalan bersamaan, serta ambang cubit untuk pengguna yang berbeda. Keduanya diukur sebelum usulan diputuskan.

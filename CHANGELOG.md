@@ -8,6 +8,8 @@ Format mengikuti [Keep a Changelog](https://keepachangelog.com/id/1.1.0/). Repo 
 
 ### Diubah
 
+- `docs/adr.md`: ADR-16 interaksi gestur tangan (status Diusulkan).
+- `docs/ipc-contract.md` naik ke 2.0.0: `decision_margin` menggantikan `confidence`, arousal hanya dari jalur wajah, kategori Netral mengikuti pita Tabel 3.3, transport mengikuti ADR-10 (port 1883 tanpa TLS), arah `moodin/ui/command` diperbaiki, dan topik baru `moodin/gesture/event`. **[lintas repo]** Software-Architecture menyesuaikan `communication/`; Hardware-Connections memperbarui catatan arsip skema topik.
 - `README.md` ditulis ulang sebagai pintu masuk TA: peta 6 repo, milestone M0–M5, prinsip privasi, dan riwayat GEMASTIK.
 - `docs/roadmap.md` diganti dengan milestone TA M0–M5.
 - `docs/team.md` memuat penulis TA, kedua pembimbing, dan riwayat tim GEMASTIK, tanpa NRP dan email.
